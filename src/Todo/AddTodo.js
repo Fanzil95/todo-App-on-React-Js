@@ -21,16 +21,16 @@ const AddTodo = ({onCreate}) => {
     const submitHandler = (event) => {
         event.preventDefault ()
 
-        if (input.value().trim()){
+        if (input.value().trim() !== textForInput){
             onCreate(input.bind.value)
             input.clear()
-            input.initValue()
-        }
+        } 
           
     }
     return (
         <form style={{marginBottom: '1rem'}} onSubmit={submitHandler}>
             <input {...input.bind} 
+                
             onKeyDown={(event)=>{
                 if (event.target.value === textForInput){
                     event.target.value = ''
@@ -38,7 +38,11 @@ const AddTodo = ({onCreate}) => {
             }}
             onClick={(event)=>{event.target.value=''}} 
             style={input.bind.value===textForInput ? {color: 'grey'} : {color: 'black'} }/>
-            <button type='submit'>Add todo</button>
+            <button type='submit' {...input.bind} onClick={(event)=>{
+                if(event.target.value===textForInput){
+                    alert('Fill the field')
+                } 
+            }}>Add todo</button>
         </form>
     );
 }

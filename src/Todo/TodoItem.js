@@ -28,7 +28,7 @@ const TodoItem = ({todo, index, onChange}) => {
                 onChange={()=>onChange(todo.id)}/>
                 <strong>{index+1}</strong>
                 &nbsp;
-                {todo.titel}
+                {todo.title}
             </span>
             <button 
             className ="rm"
